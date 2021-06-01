@@ -61,7 +61,7 @@ Operationally, Prolog's execution strategy can be thought of as a generalization
 __Execution:__
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/prolog/assets/search_tree.png" alt="tree" />
+  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/prolog/assets/search_tree.png" alt="tree" />
 </p>
 
 ## Arithmetics
@@ -108,7 +108,7 @@ __Be careful!__ Expressions are represented with __trees__ in prolog!
 This is easily explained by the fact that expressions are represented with __trees__ and the _=_ operator is used for the __unification__.
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/prolog/assets/num_tree.png" alt="tree" />
+  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/prolog/assets/num_tree.png" alt="tree" />
 </p>
 
 * Exp1 __=:=__ Exp2, is successful if the two expressions are equal. (The opposite of the the __=\=__ operator)
@@ -395,7 +395,7 @@ Each time we use the __not/1__, we have to create another search tree;
 ## Binary search trees
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/prolog/assets/binary_tree.png" alt="tree" />
+  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/prolog/assets/binary_tree.png" alt="tree" />
 </p>
 
 The following tree can be implemented as;
