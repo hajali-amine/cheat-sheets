@@ -41,10 +41,9 @@ In prolog, this will be translated to;
 
 ## Execution
 
-| |
+| IMPORTANT |
 | --- |
 | Prolog explores the rules _in the order of their implementation_ in the program, it explores the list of goals from _the left to the right_, and creates a __search tree__. |
-| |
 
 Execution of a Prolog program is initiated when the user writes a __query__. Logically, the Prolog engine tries to find a __resolution refutation__ of the _negated query_. If the negated query can be refuted, it follows that the query, with the appropriate variable bindings in place, is a logical consequence of the program. In that case, _all generated variable bindings are reported to the user_, and the query is said to have succeeded. 
 <br>
