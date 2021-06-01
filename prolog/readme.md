@@ -33,13 +33,18 @@ In prolog, this will be translated to;
     human(socrates).
     % X is a variable
     mortal(X) :- human(X).
-    ?- mortal(socrates).
+
+    %-----------
+    
+    mortal(socrates).
 ```
 
 ## Execution
 
-Prolog explores the rules _in the order of their implementation_ in the program, it explores the list of goals from _the left to the right_, and creates a __search tree__.
-<br>
+| |
+| --- |
+| Prolog explores the rules _in the order of their implementation_ in the program, it explores the list of goals from _the left to the right_, and creates a __search tree__. |
+| |
 
 Execution of a Prolog program is initiated when the user writes a __query__. Logically, the Prolog engine tries to find a __resolution refutation__ of the _negated query_. If the negated query can be refuted, it follows that the query, with the appropriate variable bindings in place, is a logical consequence of the program. In that case, _all generated variable bindings are reported to the user_, and the query is said to have succeeded. 
 <br>
@@ -51,11 +56,12 @@ Operationally, Prolog's execution strategy can be thought of as a generalization
 ``` prolog
     parent(i,j).
     parent(j,b).
-
     ancestor(X,Y) :- parent(X,Y).
     ancestor(X,Y) :- parent(X,Z), ancestor(Z,Y).
 
-    :- ancestor(i,X).
+    %-----------
+
+    ancestor(i,X).
 ```
 
 __Execution:__
@@ -73,25 +79,31 @@ An arithmetic expression is created using _numbers_, _variables_ and _arithmetic
 <br>
 
 __Usual operators:__
-* Addition __+__.
-* Substraction __-__.
-* Multiplication __*__.
-* Integer division __//__.
-* Float division __/__.
-* Rest of division __mod__.
+
+| Operator | Description |
+| --- | --- |
+| ``+`` | Addition |
+| ``-`` | Substraction |
+| ``*`` | Multiplication |
+| ``//`` | Integer division |
+| ``/`` | Float division |
+| ``mod`` | Rest of division |
   
 __Predefined mathematical functions:__
-* Absolute value __abs(X)__.
-* The log function __log(X)__.
-* Square root __sqrt(X)__.
-* The exponential function __exp(X)__.
-* The sign function __sign(X)__.
-* The random function __random(X)__.
-* The sine function __sin(X)__.
-* The cosine function __cos(X)__.
-* The tangent function __tan(X)__.
-* The minimum function __min(X,Y)__.
-* The maximum function __max(X,Y)__.
+
+| Function | Description |
+| --- | --- |
+| ``abs(X)`` | Absolute value |
+| ``log(X)`` | The log function |
+| ``sqrt(X)`` | Square root |
+| ``exp(X)`` | The exponential function |
+| ``sign(X)`` | The sign function |
+| ``random(X)`` | Evaluates to a random integer *i*, *0<=i<X* |
+| ``sin(X)`` | The sine function |
+| ``cos(X)`` | The cosine function |
+| ``tan(X)`` | The tangent function |
+| ``max(X,Y)`` | The maximum function |
+| ``min(X,Y)`` | The minimum function |
 
 __Be careful!__ Expressions are represented with __trees__ in prolog!
 <br>
@@ -105,24 +117,21 @@ __Be careful!__ Expressions are represented with __trees__ in prolog!
     X + Y = 3 + 2.
     % X=3, Y=2
 ```
-This is easily explained by the fact that expressions are represented with __trees__ and the _=_ operator is used for the __unification__.
+This is easily explained by the fact that expressions are represented with __trees__ and the ``=`` operator is used for the __unification__.
 
 <p align="center">
   <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/prolog/assets/num_tree.png" alt="tree" />
 </p>
 
-* Exp1 __=:=__ Exp2, is successful if the two expressions are equal. (The opposite of the the __=\=__ operator)
-* Exp1 __<__ Exp2, is successful if the value of Exp1 is strictly inferior than Exp2. (The opposite of the the **>** operator) 
-* Exp1 __<=__ Exp2, is successful if the value of Exp1 is inferior or equals Exp2. (The opposite of the the **>=** operator) 
+* ``Exp1 =:= Exp2``, is successful if the two expressions are equal. (The opposite of the the ``=\=`` operator)
+* ``Exp1 < Exp2``, is successful if the value of Exp1 is strictly inferior than Exp2. (The opposite of the the ``>`` operator) 
+* ``Exp1 <= Exp2``, is successful if the value of Exp1 is inferior or equals Exp2. (The opposite of the the ``>=`` operator) 
 
 ## Unification
 
-* Comparison
-  * X __==__ Y, is successful if X is identical to Y.
-  * X __\==__ Y, is successful if X is not identical to Y.
-* Unification
-  * X __=__ Y, unifies X with Y.
-  * X __\=__ Y, is successful if X is not unifiable with Y.
+| Comparaison | Unification |
+| --- | --- |
+| ``X == Y``, is successful if X is identical to Y. <br> ``X \== Y``, is successful if X is not identical to Y. | ``X = Y``, unifies X with Y. <br> ``X \= Y``, is successful if X is not unifiable with Y. |
 
 ``` prolog
     X is 9 mod 4.
@@ -160,9 +169,12 @@ In Prolog, it is possible to modify dynamically your program by adding and remov
 <br>
 
 __Predefined predicates:__
-* __asserta__: adds a fact or a rule at the _top_ of the list of facts or rules.
-* __assert__ and __assertz__: adds a fact or a rule at the _end_ of the list of facts or rules.
-* __retract__: Removes a fact or a rule from the knowledge base.
+
+| Predicate | Description |
+| --- | --- |
+| ``asserta`` | adds a fact or a rule at the __top__ of the list of facts or rules. |
+| ``assert`` and ``assertz`` | adds a fact or a rule at the __end__ of the list of facts or rules. |
+| ``retract`` | Removes a fact or a rule from the knowledge base. |
 
 To be able to use the predicates, you have to declare the concerned predicates using ``dynamic``!
 
@@ -182,10 +194,10 @@ We can also write our programs in a text file, and then load them dynamically wi
 ```
 
 We have other predicates, such as:
-* __listing__: lists all of the facts and the rules in our knowledge base.
-* __fail__: a predicate that always gives an error.
-* Predicates to verify the type: __var__, __nonvar__, __integer__, __float__, __number__, __atom__, __string__,...
-* __read__ and __write__: IO.
+* ``listing``: lists all of the facts and the rules in our knowledge base.
+* ``fail``: a predicate that always gives an error.
+* Predicates to verify the type: ``var``, ``nonvar``, ``integer``, ``float``, ``number``, ``atom``, ``string``,...
+* ``read`` and ``write``: IO.
 * and so many other predicates!
 
 ## Lists
@@ -193,12 +205,12 @@ We have other predicates, such as:
 A list is a data structure in Prolog which consists of a sequence of objects that can have different types.
 > [a, [1,2,3],X,Y] is a list.
 
-* Empty list **[]**
-* A list that are not empty **[a,b,c]**
-* Lists' constructor **|**
-  * **[Head | Rest]**
-  * **[a]** is the same as **[a | []]**
-  * [a,b] is the same as [a | [b]] which is the same as **[a | [b | []]]**
+* Empty list ``[]``
+* A list that are not empty ``[a,b,c]``
+* Lists' constructor ``|``
+  * ``[Head | Rest]``
+  * ``[a]`` is the same as ``[a | []]``
+  * ``[a,b]`` is the same as ``[a | [b]]`` which is the same as ``[a | [b | []]]``
 
 ``` prolog
     [a,b,c]=[X|L].
@@ -220,7 +232,7 @@ A list is a data structure in Prolog which consists of a sequence of objects tha
 ```
 __Predicates:__
 
-``member/2``.
+``member/2``
 
 ``` prolog
     member(X, [X|_]).
@@ -230,7 +242,7 @@ __Predicates:__
 * _Mode(input, input)_, it verifies if an element is a member of the list.
 * _Mode(output, input)_, it lists the elements of the list.
 
-``length/2``.
+``length/2``
 
 ``` prolog
     length([ ],0).
@@ -240,7 +252,7 @@ __Predicates:__
 * _Mode(input, input)_, it verifies if the length of the list given in input is right.
 * _Mode(input, output)_, it returns the length of the list.
 
-``append/3``.
+``append/3``
 
 ``` prolog
     append([],L2,L2).
@@ -249,7 +261,7 @@ __Predicates:__
     member(X,L):-append(_,[X|_],L).
 ```
 
-``reverse/2``.
+``reverse/2``
 
 ``` prolog
     reverse([],[]).
@@ -260,7 +272,7 @@ __Predicates:__
     reverse(Xs,Ys):-nreverse(Xs,[],Ys).
 ```
 
-``delete/2``.
+``delete/2``
 
 ``` prolog
     efface(_,[],[]).
@@ -268,7 +280,7 @@ __Predicates:__
     efface(X,[Y|Ys],[Y|Zs]):-X <> Y,efface(X,Ys,Zs).
 ```
 
-``permute/2``.
+``permute/2``
 
 ``` prolog
     permute([],[]).
@@ -277,7 +289,7 @@ __Predicates:__
     insert(X,[Y|Ys],[Y|Zs]) :-insert(X,Ys,Zs).
 ```
 
-``findall/3``, this predicate allows you to return a list of all of the objects that verifies a certain condition. Returns an empty list if condition not satisfied.
+``findall/3``, this predicate allows you to return a list of all of the objects that verifies a certain condition. Returns an __empty list__ if condition not satisfied.
 
 ``` prolog
     num(0).
@@ -292,11 +304,13 @@ __Predicates:__
     num(9).
     solution(X):-num(X),0<X*X-10*X+20.
     
-    ?- findall(X,solution(X),L).
+    %------
+
+    findall(X,solution(X),L).
     %L=[0,1,2,8,9]
 ```
 
-``bagof/3``, same as findall except it return an error when the condition is not satisfied and the fact that it gives a list for each value of the condition's free variables.
+``bagof/3``, same as findall except it return an error when the condition is not satisfied and the fact that it gives a list for each value of the goal's __free variables__.
 
 ``` prolog
     num(0,pair).
@@ -311,24 +325,25 @@ __Predicates:__
     num(9,impair).
     solution(X,Y):-num(X,Y),0<X*X-10*X+20.
 
-    ?- bagof(X,solution(X,Y),L).
+    %------
+
+    bagof(X,solution(X,Y),L).
     %Y=impair, L=[1,9]
     %Y=pair, L=[0,2,8]
 ```
 
 ## Cut
 
-* Cut or __!__ is a predefined predicate that is always __satisfiable__.
+* Cut or ``!`` is a predefined predicate that is always __satisfiable__.
 * It's made to control the search tree to get rid of useless explorations.
 * Cut is not logical.
 
 *H:-B1,B2,...,Bi,!,Bi+1,...,Bm.*
 
-* Once the predicate __!__ is executed, the choice-points in H, B1,...,Bi are deleted.
-* However, it can still explore other choice-points in Bi+1,...,Bm.
+* Once the predicate __!__ is executed, the choice-points in *H, B1,...,Bi* are deleted.
+* However, it can still explore other choice-points in *Bi+1,...,Bm*.
 
-Why use cut?
-
+**Why use cut?**
 * To stop useless explorations.
   
 ``` prolog
@@ -358,7 +373,7 @@ __Green cut:__ the declarative semantic of the program isn't modified. (We can r
   min(X,Y,Y):- Y<X,!.
 ```
 
-__Green cut:__ the declarative semantic of the program is modified. (Removing the cut will lead to the malfunctioning of the program.)
+__Red cut:__ the declarative semantic of the program is modified. (Removing the cut will lead to the malfunctioning of the program.)
 
 ``` prolog
   min(X,Y,X):- X=<Y,!.
@@ -367,30 +382,32 @@ __Green cut:__ the declarative semantic of the program is modified. (Removing th
 
 ## Negation
 
-The __not__ in Prolog has two limitations:
+The ``not`` in Prolog has two limitations:
 * It has to be in the body of a clause.
 
 ``` prolog
   strong(X):-athletic(X),not(small(X)).
 ```
-* The __not__ is different from the logical negation.
+* The ``not`` is different from the logical negation.
 
 ``` prolog
   r(a).
   q(b).
   p(X):-not(r(X)).
 
-  ?- q(X),p(X).
+  %------
+
+  q(X),p(X).
   % true.
-  ?- p(X),q(X).
+  p(X),q(X).
   % false.
 ```
 
 > __not(X)__ does not mean that X is always false, it means that _we don't have enough information_ to prove X.
 
-Each time we use the __not/1__, we have to create another search tree;
-* if it shows a success, then the not will return _false_.
-* if it returns all errors, the the not will return a _true_.
+Each time we use the ``not/1``, we have to create another search tree;
+* if it shows a success, then the not will return __false__.
+* if it returns all errors, the the not will return a __true__.
 
 ## Binary search trees
 
