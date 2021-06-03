@@ -109,7 +109,7 @@ __Be careful!__ Expressions are represented with __trees__ in prolog!
 
 ``` prolog
 X = 3 + 2.
-%error
+% X=3+2
 ```
 
 ``` prolog
