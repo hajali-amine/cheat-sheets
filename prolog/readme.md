@@ -271,12 +271,12 @@ reverse([X|Xs],Ys,L):-reverse(Xs,[X|Ys],L).
 reverse(Xs,Ys):-reverse(Xs,[],Ys).
 ```
 
-``delete/2``
+``delete/3``
 
 ``` prolog
-delete(_,[],[]).
-delete(X,[X|Ys],Ys).
-delete(X,[Y|Ys],[Y|Zs]):-X =\= Y,delete(X,Ys,Zs).
+delete([],_,[]).
+delete([X|Ys],X,Ys).
+delete([Y|Ys],X,[Y|Zs]):-X =\= Y,delete(Ys,X,Zs).
 ```
 
 ``permute/2``
