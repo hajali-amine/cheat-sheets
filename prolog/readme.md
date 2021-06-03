@@ -124,7 +124,7 @@ This is easily explained by the fact that expressions are represented with __tre
 
 * ``Exp1 =:= Exp2``, is successful if the two expressions are equal. (The opposite of the the ``=\=`` operator)
 * ``Exp1 < Exp2``, is successful if the value of Exp1 is strictly inferior than Exp2. (The opposite of the the ``>`` operator) 
-* ``Exp1 <= Exp2``, is successful if the value of Exp1 is inferior or equals Exp2. (The opposite of the the ``>=`` operator) 
+* ``Exp1 =< Exp2``, is successful if the value of Exp1 is inferior or equals Exp2. (The opposite of the the ``>=`` operator) 
 
 ## Unification
 
