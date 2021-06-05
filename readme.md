@@ -10,7 +10,7 @@ At the moment, you will find:
 
 ## Data Structures
 
-* [Heap](https://github.com/hajali-amine/cheat-sheets/blob/main/dara_structures/heap/readme.md)
-* [B-Tree](https://github.com/hajali-amine/cheat-sheets/blob/main/dara_structures/b_tree/readme.md)
+* [Heap](https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/heap/readme.md)
+* [B-Tree](https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/readme.md)
 
 ## Have fun! 
