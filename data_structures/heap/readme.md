@@ -29,7 +29,7 @@ Let *E* be a set mapped by a priority function *p*. We call a priority heap a da
 The level of a node X in a tree A is the __number of edges__ on the path from the root node to X.
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/assets/node_level.png" alt="level node" />
+  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/heap/assets/node_level.png" alt="level node" />
 </p>
 
 The level of the green node is __3__.
@@ -39,7 +39,7 @@ The level of the green node is __3__.
 For a binary tree A, hierarchical numbering consists of numbering, starting from 1, the nodes from *top to bottom* and for each level from the *left to the right*.
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/assets/hier_numbering.png" alt="hier numbering" />
+  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/heap/assets/hier_numbering.png" alt="hier numbering" />
 </p>
 
 ### Complete binary tree
@@ -47,7 +47,7 @@ For a binary tree A, hierarchical numbering consists of numbering, starting from
 A complete binary tree is a binary tree in which every level, __except possibly the last__, is completely filled, and all nodes are *as far left* as possible.
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/assets/complete_tree.png" alt="complete" />
+  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/heap/assets/complete_tree.png" alt="complete" />
 </p>
 
 ### Heap
@@ -72,7 +72,7 @@ typedef struct{
 You may be wondering as to why we represent it as an array! Well let me explain.
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/assets/array.png" alt="array" />
+  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/heap/assets/array.png" alt="array" />
 </p>
 
 The root is the node of index ``0``. And for a node of index ``i``, the **parent** is the node of index ``i-1 div 2``, the **left child** is the node of index ``2i+1`` and the **right child** is the node of index ``2i+2``.
