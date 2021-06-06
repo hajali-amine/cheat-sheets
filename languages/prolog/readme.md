@@ -41,8 +41,8 @@ mortal(socrates).
 
 ## Execution
 
-| IMPORTANT |
-| --- |
+| IMPORTANT                                                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Prolog explores the rules _in the order of their implementation_ in the program, it explores the list of goals from _the left to the right_, and creates a __search tree__. |
 
 Execution of a Prolog program is initiated when the user writes a __query__. Logically, the Prolog engine tries to find a __resolution refutation__ of the _negated query_. If the negated query can be refuted, it follows that the query, with the appropriate variable bindings in place, is a logical consequence of the program. In that case, _all generated variable bindings are reported to the user_, and the query is said to have succeeded. 
@@ -66,7 +66,7 @@ ancestor(i,X).
 __Execution:__
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/prolog/assets/search_tree.png" alt="tree" />
+  <img src="assets/search_tree.png" alt="tree" />
 </p>
 
 ## Arithmetics
@@ -79,30 +79,30 @@ An arithmetic expression is created using _numbers_, _variables_ and _arithmetic
 
 __Usual operators:__
 
-| Operator | Description |
-| --- | --- |
-| ``+`` | Addition |
-| ``-`` | Substraction |
-| ``*`` | Multiplication |
-| ``//`` | Integer division |
-| ``/`` | Float division |
-| ``mod`` | Rest of division |
+| Operator | Description      |
+| -------- | ---------------- |
+| ``+``    | Addition         |
+| ``-``    | Substraction     |
+| ``*``    | Multiplication   |
+| ``//``   | Integer division |
+| ``/``    | Float division   |
+| ``mod``  | Rest of division |
   
 __Predefined mathematical functions:__
 
-| Function | Description |
-| --- | --- |
-| ``abs(X)`` | Absolute value |
-| ``log(X)`` | The log function |
-| ``sqrt(X)`` | Square root |
-| ``exp(X)`` | The exponential function |
-| ``sign(X)`` | The sign function |
+| Function      | Description                                 |
+| ------------- | ------------------------------------------- |
+| ``abs(X)``    | Absolute value                              |
+| ``log(X)``    | The log function                            |
+| ``sqrt(X)``   | Square root                                 |
+| ``exp(X)``    | The exponential function                    |
+| ``sign(X)``   | The sign function                           |
 | ``random(X)`` | Evaluates to a random integer *i*, *0<=i<X* |
-| ``sin(X)`` | The sine function |
-| ``cos(X)`` | The cosine function |
-| ``tan(X)`` | The tangent function |
-| ``max(X,Y)`` | The maximum function |
-| ``min(X,Y)`` | The minimum function |
+| ``sin(X)``    | The sine function                           |
+| ``cos(X)``    | The cosine function                         |
+| ``tan(X)``    | The tangent function                        |
+| ``max(X,Y)``  | The maximum function                        |
+| ``min(X,Y)``  | The minimum function                        |
 
 __Be careful!__ Expressions are represented with __trees__ in prolog!
 <br>
@@ -119,7 +119,7 @@ X + Y = 3 + 2.
 This is easily explained by the fact that expressions are represented with __trees__ and the ``=`` operator is used for the __unification__.
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/prolog/assets/num_tree.png" alt="tree" />
+  <img src="assets/num_tree.png" alt="tree" />
 </p>
 
 * ``Exp1 =:= Exp2``, is successful if the two expressions are equal. (The opposite of the the ``=\=`` operator)
@@ -128,8 +128,8 @@ This is easily explained by the fact that expressions are represented with __tre
 
 ## Unification
 
-| Comparaison | Unification |
-| --- | --- |
+| Comparaison                                                                                                   | Unification                                                                               |
+| ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ``X == Y``, is successful if X is identical to Y. <br> ``X \== Y``, is successful if X is not identical to Y. | ``X = Y``, unifies X with Y. <br> ``X \= Y``, is successful if X is not unifiable with Y. |
 
 ``` prolog
@@ -169,11 +169,11 @@ In Prolog, it is possible to modify dynamically your program by adding and remov
 
 __Predefined predicates:__
 
-| Predicate | Description |
-| --- | --- |
-| ``asserta`` | adds a fact or a rule at the __top__ of the list of facts or rules. |
+| Predicate                  | Description                                                         |
+| -------------------------- | ------------------------------------------------------------------- |
+| ``asserta``                | adds a fact or a rule at the __top__ of the list of facts or rules. |
 | ``assert`` and ``assertz`` | adds a fact or a rule at the __end__ of the list of facts or rules. |
-| ``retract`` | Removes a fact or a rule from the knowledge base. |
+| ``retract``                | Removes a fact or a rule from the knowledge base.                   |
 
 To be able to use the predicates, you have to declare the concerned predicates using ``dynamic``!
 
@@ -411,7 +411,7 @@ Each time we use the ``not/1``, we have to create another search tree;
 ## Binary search trees
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/prolog/assets/binary_tree.png" alt="tree" />
+  <img src="assets/binary_tree.png" alt="tree" />
 </p>
 
 The following tree can be implemented as;
