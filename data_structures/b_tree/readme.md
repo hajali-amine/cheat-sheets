@@ -133,15 +133,19 @@ void insertIncomplete(bTree t, int key)
 
 ``` c
 bTree insert(bTree t, int key){
-    if(t->size == 2*m-1){
-        bTree newTree = create(m);
+    if (t->size == 2 * M - 1)
+    { // if the root node t is full on keys seperate then insert properly. Note that using this way, the tree will grow upwards and sideways everytime we add a key.
+        bTree newTree = create(M);
         newTree->children[0] = t;
-        seperate(newTree, 0);
+        seperate(newTree, 0); // Seperate node t into 2 parts an lift up the moddile to the new Root node newTree.
         insertIncomplete(newTree, key);
         return newTree;
     }
-    insertIncomplete(t, key);
-    return t;
+    else
+    {
+        insertIncomplete(t, key);
+        return t;
+    }
 }
 ```
 
