@@ -91,7 +91,7 @@ void seperate(bTree t, int nodeIndex)
     for (int i = t->size + 1; i > nodeIndex + 1; i--)
         t->children[i] = t->children[i + 1]; // Setting off children by 1 index
     t->size++;
-    t->key[nodeIndex] = childTree->key[M]; // M is exactly the middle element that we pulled up in order to split
+    t->key[nodeIndex] = childTree->key[M - 1]; // M is exactly the middle element that we pulled up in order to split
     t->children[nodeIndex + 1] = newTree;
 }
 ```
