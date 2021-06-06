@@ -137,7 +137,7 @@ bTree insert(bTree t, int key){
     { // if the root node t is full on keys seperate then insert properly. Note that using this way, the tree will grow upwards and sideways everytime we add a key.
         bTree newTree = create(M);
         newTree->children[0] = t;
-        seperate(newTree, 0); // Seperate node t into 2 parts an lift up the moddile to the new Root node newTree.
+        seperate(newTree, 0); // Seperate node t into 2 parts an lift up the middle key to the new Root node newTree.
         insertIncomplete(newTree, key);
         return newTree;
     }
