@@ -13,7 +13,7 @@ A B-tree of **order m** follows the following rules;
 ## Node's structure
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/assets/node.png" alt="node" />
+  <img src="assets/node.png" alt="node" />
 </p>
 
 * p*i* is a pointer to a node that has keys, ``keys<ki``,
@@ -22,7 +22,7 @@ A B-tree of **order m** follows the following rules;
 * satellite information are stored with corresponding keys or in an another page.
 
 <p align="center">
-  <img src="https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/assets/example.png" alt="example" />
+  <img src="assets/example.png" alt="example" />
 </p>
 
  ### Structure
@@ -151,9 +151,9 @@ bTree insert(bTree t, int key){
 
 ## Removing a key in a B Tree
 
-| IMPORTANT |
-| --- |
-| In here you will find two functions ``borrowRight``, ``fusionRight`` and ``deletePred``, you should know that there are also two other ``borrowLeft``, ``fusionRight`` and ``deleteSucc`` that are basically symetrical to the right version. <br> __You should implement them__. | 
+| IMPORTANT                                                                                                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| In here you will find two functions ``borrowRight``, ``fusionRight`` and ``deletePred``, you should know that there are also two other ``borrowLeft``, ``fusionRight`` and ``deleteSucc`` that are basically symetrical to the right version. <br> __You should implement them__. |
 
 ### Borrowing a key from a right child
 

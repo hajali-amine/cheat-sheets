@@ -6,11 +6,11 @@ At the moment, you will find:
 
 ## Languages
 
-* [Prolog](https://github.com/hajali-amine/cheat-sheets/blob/main/languages/prolog/readme.md)
+* [Prolog](languages/prolog/readme.md)
 
 ## Data Structures
 
-* [Heap](https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/heap/readme.md)
-* [B-Tree](https://github.com/hajali-amine/cheat-sheets/blob/main/data_structures/b_tree/readme.md)
+* [Heap](data_structures/heap/readme.md)
+* [B-Tree](/data_structures/b_tree/readme.md)
 
 ## Have fun! 
