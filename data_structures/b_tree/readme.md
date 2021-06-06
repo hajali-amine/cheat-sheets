@@ -273,7 +273,7 @@ bTree internalDelete(bTree t, int key){
 
 ### Removing a key
 
-````c
+```c
 bTree deleteNode(bTree t, int key){
     if(t->size == 1 && t->children[0] != NULL && t->children[0]->size < m && t->children[1]->size < m){
         fusionRight(t,0);
