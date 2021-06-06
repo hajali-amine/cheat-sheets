@@ -5,8 +5,8 @@ B-trees are **self-balanced search trees**, they are commonly used in databases.
 ## Definition
 
 A B-tree of **order m** follows the following rules;
-* the __root node__ has *k* keys, ``1<k<2m-1``,
-* the __other nodes__ have *k* keys, ``m-1<k<2m-1``,
+* the __root node__ has *k* keys, ``1<=k<=2m-1``,
+* the __other nodes__ have *k* keys, ``m-1<=k<=2m-1``,
 * the leaves are of the *same depth*,
 * if the tree has *more than one leaf*, the root has ``at least two children`` and ``at most 2m children``.
 

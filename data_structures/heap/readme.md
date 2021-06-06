@@ -1,8 +1,8 @@
-# Heap & Priority files
+# Heap & Priority queues
 
-## Priority files
+## Priority queues
 
-Let *E* be a set mapped by a priority function *p*. We call a priority heap a data type that allows us to:
+Let *E* be a set mapped by a priority function *p*. We call a priority queue a data type that allows us to:
 * represent *E*,
 * add an element, with a given __priority__, to *E*,
 * remove an element with the __lowest/highest__ priority.
