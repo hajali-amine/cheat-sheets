@@ -197,7 +197,7 @@ void fusionRight(bTree t, int nodeIndex){
 }
 ```
 
-### Delete the last element of the left sibling
+### Remove the last element of the left child and put it in place of the key-to-delete
 
 ``` c
 int deletePred(bTree t){
@@ -215,7 +215,7 @@ int deletePred(bTree t){
 }
 ```
 
-### Delete internal node
+### Remove key from an internal node
 
 ``` c
 bTree internalDelete(bTree t, int key){
