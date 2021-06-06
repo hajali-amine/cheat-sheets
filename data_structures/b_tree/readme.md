@@ -178,9 +178,9 @@ void borrowRight(bTree t, int nodeIndex){
 
 ``` c
 void fusionRight(bTree t, int nodeIndex){
-    bTree tLeft = t->children[nodeIndex - 1];
-    bTree tRight = t->children[nodeIndex];
-    tLeft->key[tLeft->size] = t->key[nodeIndex - 1];
+    bTree tLeft = t->children[nodeIndex];
+    bTree tRight = t->children[nodeIndex + 1];
+    tLeft->key[tLeft->size] = t->key[nodeIndex];
     for(int i = 0; i < tLeft->size; i++){
         tLeft->key[tLeft->size + i + 1] = tRight->key[i];
         tLeft->children[tLeft->size + i + 1] = tRight->children[i];
@@ -188,7 +188,7 @@ void fusionRight(bTree t, int nodeIndex){
     tLeft->key[tLeft->size + t->size] = tRight->children[tRight->size];
     tLeft->size = 2*m-1;
     free(tRight);
-    for(int i = nodeIndex - 1; i < t->size - 1; i++){ 
+    for(int i = nodeIndex; i < t->size - 1; i++){ 
         t->key[i] = t->key[i + 1];
         t->children[i] = t->children[i + 1];
     }
