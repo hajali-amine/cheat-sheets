@@ -67,23 +67,32 @@ bTree search(bTree t, int key){
 ### Seperating the node in case it exceeds 2m-1 keys
 
 ``` c
-void seperate(bTree t, int nodeIndex){
-    bTree newTree = create(m);
+void seperate(bTree t, int nodeIndex)
+{
+    bTree newTree = create(M);
     bTree childTree = t->children[nodeIndex];
-    for (int i = 0; i < m-1; i++) 
-        newTree->key[i] = childTree->key[i+m];
-    if (childTree->children[0] != NULL)
-        for (int i = 0; i < m; i++) 
-            newTree->children[i] = childTree->children[i+m];
-    childTree->size = m-1;
-    newTree->size = m-1;
-    for (int i = t->size; i > nodeIndex; i--)
-        t->key[i] = t->key[i-1]; 
-    for (int i = t->size+1; i > nodeIndex + 1; i--)
-        t->children[i] = t->children[i-1];       
+    for (int i = 0; i < M - 1; i++) // initialize the newTree Keys with the right half of the to-be-split element
+        newTree->key[i] = childTree->key[i + M];
+    if (childTree->children[0] != NULL) // if old tree Node @ nodeIndex has children
+        for (int j = 0; j < M; j++)     // copy second half of children onto the newly created Tree.
+            newTree->children[j] = childTree->children[j + M];
+    childTree->size = M - 1;
+    newTree->size = M - 1;
+    // In the next segment we'll make space to pull up the middle element of the nodeIndex node in the correct spot of his parent node so we have to set off the right half  by 1 index;
+    //  It will look something like this
+    // [-,-,-,-],middleNode,[-,-,-,-]
+    //          ||
+    //          V
+    //      ...,middleNode,...
+    //          /       \
+    //   [-,-,-,-]      [-,-,-,-]
+    for (int i = t->size; i > nodeIndex; i--) //Setting of keys by 1 index to the right
+        t->key[i] = t->key[i - 1];
+    for (int i = t->size + 1; i > nodeIndex + 1; i--)
+        t->children[i] = t->children[i + 1]; // Setting of children by 1 index
     t->size++;
-    t->key[nodeIndex] = childTree->key[m]; 
-    t->children[indice+1] = newTree;
+    t->key[nodeIndex] = childTree->key[M]; // M is exactly the middle element that we pulled up in order to split
+    t->children[nodeIndex + 1] = newTree;
 }
 ```
 
