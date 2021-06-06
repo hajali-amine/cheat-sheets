@@ -31,7 +31,7 @@ A B-tree of **order m** follows the following rules;
 typedef struc bNode{ 
     bNode* children[2*m];
     int key[2*m-1];
-    int size;
+    int size; // Number of keys, we can always determine later on number of children by doing size+1.
 } node;
 typedef node* bTree;
 ```
@@ -86,10 +86,10 @@ void seperate(bTree t, int nodeIndex)
     //      ...,middleNode,...
     //          /       \
     //   [-,-,-,-]      [-,-,-,-]
-    for (int i = t->size; i > nodeIndex; i--) //Setting of keys by 1 index to the right
+    for (int i = t->size; i > nodeIndex; i--) //Setting off keys by 1 index to the right
         t->key[i] = t->key[i - 1];
     for (int i = t->size + 1; i > nodeIndex + 1; i--)
-        t->children[i] = t->children[i + 1]; // Setting of children by 1 index
+        t->children[i] = t->children[i + 1]; // Setting off children by 1 index
     t->size++;
     t->key[nodeIndex] = childTree->key[M]; // M is exactly the middle element that we pulled up in order to split
     t->children[nodeIndex + 1] = newTree;
@@ -99,22 +99,29 @@ void seperate(bTree t, int nodeIndex)
 ### Inserting in an incomplete node
 
 ``` c
-void insertIncomplete(bTree t, int key){
-    if (t->children[0] == NULL){
-        int i = t->size-1;
-        while (i => 0 && key < t->key[i]){
-            t->key[i+1] = t->key[i];
+void insertIncomplete(bTree t, int key)
+{
+    if (t->children[0] == NULL) // if t is a Leaf Node
+    {
+        int i = t->size - 1;
+        while (i >= 0 && key < t->key[i]) // Set off all elements bigger than the key 1 index to the right
+        {
+            t->key[i + 1] = t->key[i];
             i--;
         }
-        t->key[i+1] = key;
+        // Shifting is over and now correct spot of key is empty
+        t->key[i + 1] = key;
         t->size++;
-    }else{
+    }
+    else
+    { // if t is not a Leaf Node
         int i = 0;
-        while (i < t->size && key > t->key[i])
+        while (i < t->size && t->key[i] < key) // finding the right index to insert Key at.
             i++;
-        if (t->children[i]->size == m*2-1){
+        if (t->children[i]->size == 2 * M - 1)
+        { // If the node at i is full on keys we sperate then insert in the appropriate half.
             seperate(t, i);
-            if (key > t->key[i])
+            if (key < t->key[i]) // determine wether to insert in left half (i) or the new right half (i+1)
                 i++;
         }
         insertIncomplete(t->children[i], key);
