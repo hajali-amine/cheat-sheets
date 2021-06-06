@@ -185,7 +185,7 @@ void fusionRight(bTree t, int nodeIndex){
         tLeft->key[tLeft->size + i + 1] = tRight->key[i];
         tLeft->children[tLeft->size + i + 1] = tRight->children[i];
     }
-    tLeft->key[tLeft->size + t->size] = tRight->children[tRight->size];
+    tLeft->key[2*m-1] = tRight->children[tRight->size];
     tLeft->size = 2*m-1;
     free(tRight);
     for(int i = nodeIndex; i < t->size - 1; i++){ 
