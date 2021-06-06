@@ -39,7 +39,7 @@ The level of the green node is __3__.
 For a binary tree A, hierarchical numbering consists of numbering, starting from 1, the nodes from *top to bottom* and for each level from the *left to the right*.
 
 <p align="center">
-  <img src="/assets/hier_numbering.png" alt="hier numbering" />
+  <img src="assets/hier_numbering.png" alt="hier numbering" />
 </p>
 
 ### Complete binary tree
