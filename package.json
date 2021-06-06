@@ -1,0 +1,23 @@
+{
+  "name": "cheat-sheets",
+  "version": "1.0.0",
+  "description": "pdf converter",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node toPdf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hajali-amine/cheat-sheets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hajali-amine/cheat-sheets/issues"
+  },
+  "homepage": "https://github.com/hajali-amine/cheat-sheets#readme",
+  "dependencies": {
+    "md-to-pdf": "^3.3.2"
+  }
+}
