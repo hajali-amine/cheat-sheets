@@ -31,7 +31,7 @@ A B-tree of **order m** follows the following rules;
 typedef struc bNode{ 
     bNode* children[2*m];
     int key[2*m-1];
-    int size;
+    int size; // Number of keys, we can always determine later on number of children by doing size+1.
 } node;
 typedef node* bTree;
 ```
@@ -67,45 +67,61 @@ bTree search(bTree t, int key){
 ### Seperating the node in case it exceeds 2m-1 keys
 
 ``` c
-void seperate(bTree t, int nodeIndex){
-    bTree newTree = create(m);
+void seperate(bTree t, int nodeIndex)
+{
+    bTree newTree = create(M);
     bTree childTree = t->children[nodeIndex];
-    for (int i = 0; i < m-1; i++) 
-        newTree->key[i] = childTree->key[i+m];
-    if (childTree->children[0] != NULL)
-        for (int i = 0; i < m; i++) 
-            newTree->children[i] = childTree->children[i+m];
-    childTree->size = m-1;
-    newTree->size = m-1;
-    for (int i = t->size; i > nodeIndex; i--)
-        t->key[i] = t->key[i-1]; 
-    for (int i = t->size+1; i > nodeIndex + 1; i--)
-        t->children[i] = t->children[i-1];       
+    for (int i = 0; i < M - 1; i++) // initialize the newTree Keys with the right half of the to-be-split element
+        newTree->key[i] = childTree->key[i + M];
+    if (childTree->children[0] != NULL) // if old tree Node @ nodeIndex has children
+        for (int j = 0; j < M; j++)     // copy second half of children onto the newly created Tree.
+            newTree->children[j] = childTree->children[j + M];
+    childTree->size = M - 1;
+    newTree->size = M - 1;
+    // In the next segment we'll make space to pull up the middle element of the nodeIndex node in the correct spot of his parent node so we have to set off the right half  by 1 index;
+    //  It will look something like this
+    // [-,-,-,-],middleNode,[-,-,-,-]
+    //          ||
+    //          V
+    //      ...,middleNode,...
+    //          /       \
+    //   [-,-,-,-]      [-,-,-,-]
+    for (int i = t->size; i > nodeIndex; i--) //Setting off keys by 1 index to the right
+        t->key[i] = t->key[i - 1];
+    for (int i = t->size + 1; i > nodeIndex + 1; i--)
+        t->children[i] = t->children[i + 1]; // Setting off children by 1 index
     t->size++;
-    t->key[nodeIndex] = childTree->key[m]; 
-    t->children[indice+1] = newTree;
+    t->key[nodeIndex] = childTree->key[M]; // M is exactly the middle element that we pulled up in order to split
+    t->children[nodeIndex + 1] = newTree;
 }
 ```
 
 ### Inserting in an incomplete node
 
 ``` c
-void insertIncomplete(bTree t, int key){
-    if (t->children[0] == NULL){
-        int i = t->size-1;
-        while (i => 0 && key < t->key[i]){
-            t->key[i+1] = t->key[i];
+void insertIncomplete(bTree t, int key)
+{
+    if (t->children[0] == NULL) // if t is a Leaf Node
+    {
+        int i = t->size - 1;
+        while (i >= 0 && key < t->key[i]) // Set off all elements bigger than the key 1 index to the right
+        {
+            t->key[i + 1] = t->key[i];
             i--;
         }
-        t->key[i+1] = key;
+        // Shifting is over and now correct spot of key is empty
+        t->key[i + 1] = key;
         t->size++;
-    }else{
+    }
+    else
+    { // if t is not a Leaf Node
         int i = 0;
-        while (i < t->size && key > t->key[i])
+        while (i < t->size && t->key[i] < key) // finding the right index to insert Key at.
             i++;
-        if (t->children[i]->size == m*2-1){
+        if (t->children[i]->size == 2 * M - 1)
+        { // If the node at i is full on keys we sperate then insert in the appropriate half.
             seperate(t, i);
-            if (key > t->key[i])
+            if (key < t->key[i]) // determine wether to insert in left half (i) or the new right half (i+1)
                 i++;
         }
         insertIncomplete(t->children[i], key);
@@ -117,15 +133,19 @@ void insertIncomplete(bTree t, int key){
 
 ``` c
 bTree insert(bTree t, int key){
-    if(t->size == 2*m-1){
-        bTree newTree = create(m);
+    if (t->size == 2 * M - 1)
+    { // if the root node t is full on keys seperate then insert properly. Note that using this way, the tree will grow upwards and sideways everytime we add a key.
+        bTree newTree = create(M);
         newTree->children[0] = t;
-        seperate(newTree, 0);
+        seperate(newTree, 0); // Seperate node t into 2 parts an lift up the middle key to the new Root node newTree.
         insertIncomplete(newTree, key);
         return newTree;
     }
-    insertIncomplete(t, key);
-    return t;
+    else
+    {
+        insertIncomplete(t, key);
+        return t;
+    }
 }
 ```
 
